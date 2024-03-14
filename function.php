@@ -15,6 +15,9 @@
                               ";
                 $result = $connection -> query($sql_insert);
 
+
+                
+
                 if($result){
                     echo '
                         <script>
