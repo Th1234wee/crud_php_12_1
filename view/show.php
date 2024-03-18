@@ -18,6 +18,9 @@
         <h2>Product's Informati​​​on​</h2>
         <button id="open_add" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-plus"></i>  Add Product</button>
      </div>
+     <div class="container mt-4">
+         <button class="btn btn-outline-secondary"><a href="backup.php">Recycle Bin</a></button>
+     </div>
      <br><br>
      <div class="container">
         <table class="table align-middle" style="table-layout: fixed;">

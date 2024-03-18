@@ -14,10 +14,6 @@
                                 VALUES                  ('$name' ,'$category' ,'$price');
                               ";
                 $result = $connection -> query($sql_insert);
-
-
-                
-
                 if($result){
                     echo '
                         <script>
@@ -81,7 +77,7 @@
                     <form method="post">
                         <td>
                             <input name="remove_id" type="hidden" value='.$row['id'].'>
-                            <button id="open_edit" class="btn btn-outline-warning " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-pen-to-square"></i>  Edit</button>
+                            <button type="button" id="open_edit" class="btn btn-outline-warning " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-pen-to-square"></i>  Edit</button>
                             <button name="btn_delete" type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i>  Delete</button>
                         </td>
                     </form>
@@ -194,17 +190,52 @@
     function restore_data(){
         global $connection;
         if(isset($_POST['btn_restore'])){
-            echo $restore_id = $_POST['restore_id'];
+            $restore_id = $_POST['restore_id'];
             $sql_restore = "
                                 UPDATE `tbproduct` 
                                 SET `is_deleted` = 0 
                                 WHERE `id` = '$restore_id'
                             " ;
             $result = $connection -> query($sql_restore);
-            if($result){
-                echo 123;
-            }
+                if($result){
+                    echo '
+                        <script>
+                            $(document).ready(function(){
+                                swal({
+                                    title: "Data Restored",
+                                    text: "You restored product",
+                                    icon: "success",
+                                    button: "Confirm",
+                                });
+                            })
+                        </script>
+                    ';
+                }
         }
         
     }
     restore_data();
+    function empty_data(){
+        global $connection; 
+        if(isset($_POST['btn_empty'])){
+            $sql_remove_all = "DELETE FROM `tbproduct` WHERE `is_deleted` = 1";
+
+            $result = $connection -> query($sql_remove_all);
+
+            if($result){
+                echo '
+                        <script>
+                            $(document).ready(function(){
+                                swal({
+                                    title: "Empty Data",
+                                    text: "You remove all product",
+                                    icon: "success",
+                                    button: "Confirm",
+                                });
+                            })
+                        </script>
+                    ';
+            }
+        }
+    }
+    empty_data();

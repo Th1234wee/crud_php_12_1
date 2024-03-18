@@ -16,7 +16,12 @@
 <body>
      <div class="container border border-5 p-4 d-flex justify-content-between mt-4">
         <h2>Recycle Bin</h2>
-        <button id="open_add" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash-can"></i>  Empty Recycle Bin</button>
+        <form method="post">
+            <button type="submit" name="btn_empty" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash-can"></i>  Empty Recycle Bin</button>
+        </form>
+     </div>
+     <div class="container mt-4">
+         <button class="btn btn-outline-secondary"><a href="show.php">Back to view</a></button>
      </div>
      <br><br>
      <div class="container">
